@@ -49,15 +49,18 @@ module.exports = {
   },
   devServer: {
     contentBase: path.resolve(clientPath, "dist"),
-    // historyApiFallback: true,
     host: "127.0.0.1",
     port: 7000,
     inline: true,
     hot: true,
     compress: true,
-    // overlay: true,
     open: true,
-    // disabelHostCheck: true
+    proxy: {
+      "/api": {
+        target: "http://127.0.0.1:7001/",
+        changeOrigin: true
+      }
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({
