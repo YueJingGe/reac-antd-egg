@@ -96,39 +96,39 @@ npm run start
   describe users; # 查看users表
   ```
 
-结果：
+  结果：
 
-```shell
-+--------------------+
-|     Databases      |
-+--------------------+
-| information_schema |
-| learn              |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-```
+  ```shell
+  +--------------------+
+  |     Databases      |
+  +--------------------+
+  | information_schema |
+  | learn              |
+  | mysql              |
+  | performance_schema |
+  | sys                |
+  +--------------------+
+  ```
 
-```bash
-+------------+--------------+------+-----+---------+----------------+
-| Field      | Type         | Null | Key | Default | Extra          |
-+------------+--------------+------+-----+---------+----------------+
-| id         | int(11)      | NO   | PRI | NULL    | auto_increment |
-| userId     | varchar(255) | NO   |     | NULL    |                |
-| username   | varchar(255) | NO   |     | NULL    |                |
-| email      | varchar(255) | NO   |     | NULL    |                |
-| password   | varchar(255) | NO   |     | NULL    |                |
-| avatarUrl  | varchar(256) | YES  |     | NULL    |                |
-| mobile     | varchar(32)  | YES  |     | NULL    |                |
-| prifix     | varchar(32)  | YES  |     | NULL    |                |
-| abstract   | varchar(255) | YES  |     | NULL    |                |
-| sex        | int(11)      | YES  |     | 0       |                |
-| created_at | datetime     | YES  |     | NULL    |                |
-| updated_at | datetime     | YES  |     | NULL    |                |
-+------------+--------------+------+-----+---------+----------------+
-12 rows in set (0.01 sec)
-```
+  ```bash
+  +------------+--------------+------+-----+---------+----------------+
+  | Field      | Type         | Null | Key | Default | Extra          |
+  +------------+--------------+------+-----+---------+----------------+
+  | id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+  | userId     | varchar(255) | NO   |     | NULL    |                |
+  | username   | varchar(255) | NO   |     | NULL    |                |
+  | email      | varchar(255) | NO   |     | NULL    |                |
+  | password   | varchar(255) | NO   |     | NULL    |                |
+  | avatarUrl  | varchar(256) | YES  |     | NULL    |                |
+  | mobile     | varchar(32)  | YES  |     | NULL    |                |
+  | prifix     | varchar(32)  | YES  |     | NULL    |                |
+  | abstract   | varchar(255) | YES  |     | NULL    |                |
+  | sex        | int(11)      | YES  |     | 0       |                |
+  | created_at | datetime     | YES  |     | NULL    |                |
+  | updated_at | datetime     | YES  |     | NULL    |                |
+  +------------+--------------+------+-----+---------+----------------+
+  12 rows in set (0.01 sec)
+  ```
 
 - migration 迁移
 
