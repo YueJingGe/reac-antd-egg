@@ -94,6 +94,8 @@ npm run start
   mysql -u root -p   # 进入mysql
   use learn; # 使用learn数据库
   describe users; # 查看users表
+  truncate users; # 清空users表
+  select * from users; # 从users表中查询
   ```
 
   结果：
@@ -140,3 +142,20 @@ npm run start
 
   ORM 映射：提供了增删改查的接口，比如：create、findOne，使用 js 函数的方式描述 SQL 语句
 
+- password 加密
+
+  crypto 单向加密 通用的加密+哈希算法 Hmac sha256 加密格式
+
+  ```js
+  // 加密保存用户密码
+  user.password = crypto
+    .createHmac("sha256", app.config.password_secret)
+    .update(user.password)
+    .digest("hex");
+  ```
+
+## 登录
+
+- JSON Web Token jwt
+
+  在用户和服务器之间传递安全可靠的信息，依靠 cookie 传递

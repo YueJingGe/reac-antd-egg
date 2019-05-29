@@ -26,6 +26,9 @@ module.exports = appInfo => {
     password: '12345678',
     database: 'learn',
   };
+  config.password_secret = 'ps123secr';
+  config.jwtSecret = 'yjg';
+  config.auth_cookie_name = 'token';
 
   // add your user config here
   const userConfig = {
