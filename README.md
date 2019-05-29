@@ -74,7 +74,7 @@ npm run start
 
 - 文件权限
 
-`chmod -R 777 database/`
+  `chmod -R 777 database/`
 
 - 数据库 sequelize mysql2 sequelize-cli
 
@@ -88,13 +88,13 @@ npm run start
 
 - 数据库命令
 
-```bash
-PATH="$PATH":/usr/local/mysql/bin
-mysqlshow -u root -p # 12345678
-mysql -u root -p   # 进入mysql
-use learn; # 使用learn数据库
-describe users; # 查看users表
-```
+  ```bash
+  PATH="$PATH":/usr/local/mysql/bin
+  mysqlshow -u root -p # 12345678
+  mysql -u root -p   # 进入mysql
+  use learn; # 使用learn数据库
+  describe users; # 查看users表
+  ```
 
 结果：
 
@@ -130,11 +130,13 @@ describe users; # 查看users表
 12 rows in set (0.01 sec)
 ```
 
-`./node_modules/.bin/sequelize migration:create --name create-users`
+- migration 迁移
 
-migration 作用：完成 SQL 的迁移，使用 js 语句代替 SQL 语句创建表、声明字段类型
+  `./node_modules/.bin/sequelize migration:create --name create-users`
 
-model 文件作用：使用 js 对象描述数据表，相当于状态管理，状态初始化
+  migration 作用：完成 SQL 的迁移，使用 js 语句代替 SQL 语句创建表、声明字段类型
 
-ORM 映射：提供了增删改查的接口，比如：create、findOne，使用 js 函数的方式描述 SQL 语句
+  model 文件作用：使用 js 对象描述数据表，相当于状态管理，状态初始化
+
+  ORM 映射：提供了增删改查的接口，比如：create、findOne，使用 js 函数的方式描述 SQL 语句
 
