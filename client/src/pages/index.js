@@ -12,6 +12,9 @@ class Instagram extends React.Component {
     axios.get("/api").then(data => {
       console.log(data);
     });
+    axios.post("/api/login/register").then(data => {
+      console.log(data);
+    });
   }
 }
 export default Instagram;
