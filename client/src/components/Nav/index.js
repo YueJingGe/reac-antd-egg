@@ -1,6 +1,6 @@
 import React from "react";
 import { Menu, Dropdown, Icon, notification } from "antd";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Style from "./index.scss";
 
 const menu = (
@@ -18,8 +18,8 @@ class Nav extends React.Component {
   render() {
     return (
       <div className={Style['nav-container']}>
-        <Dropdown overlay={menu} className={Style['right-side']}>
-          <a className={Style["ant-dropdown-link"]} href="#">
+        <Dropdown overlay={menu} className='right-side'>
+          <a className="ant-dropdown-link" href="#">
             <Icon type="menu" />
           </a>
         </Dropdown>

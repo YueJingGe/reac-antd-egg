@@ -1,25 +1,37 @@
 import React from "react";
 import axios from "axios";
-import Nav from '@components/Nav/index.js'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./Home/index";
+import Login from "./Login/index";
+import NotFound from "./NotFound/index";
+import Style from './index.scss';
 
-class Instagram extends React.Component {
+class Layout extends React.Component {
   render() {
-    return <main>
-      <Nav />
-    </main>;
+    return (
+      <div className={Style['layout']}>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/login" component={Login} />
+            <Route component={NotFound} />
+          </Switch>
+        </Router>
+      </div>
+    );
   }
-  componentDidMount() {
-    axios.get("/api").then(data => {
-      console.log(data);
-    });
-    let params = {
-      username: 'kangkang',
-      email: '12@163.com',
-      password: '123456'
-    }
-    axios.post("/api/v2/login", params).then(data => {
-      console.log(data);
-    });
-  }
+  // componentDidMount() {
+  //   axios.get("/api").then(data => {
+  //     console.log(data);
+  //   });
+  //   let params = {
+  //     username: 'kangkang',
+  //     email: '12@163.com',
+  //     password: '123456'
+  //   }
+  //   axios.post("/api/v2/login", params).then(data => {
+  //     console.log(data);
+  //   });
+  // }
 }
-export default Instagram;
+export default Layout;

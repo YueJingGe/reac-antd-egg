@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Instagram from "./src/pages/index.js";
+import Layout from "./src/pages/index.js";
+import './index.css';
 
-ReactDOM.render(<Instagram />, document.getElementById("root"));
+ReactDOM.render(<Layout />, document.getElementById("root"));

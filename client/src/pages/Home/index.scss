@@ -1,0 +1,33 @@
+:local(.home) {
+  width: 100%;
+
+  > header {
+    height: 50px;
+    border-bottom: 1px solid #eee;
+    > nav{
+      width: 50%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 auto;
+    }
+  } 
+  .icon{
+    &:hover{
+      color: #1890ff;
+    }
+  }
+  .size-30{
+    font-size: 30px;
+  }
+  .size-18 {
+    font-size: 18px;
+  }
+  .pad-left-30{
+    padding-left: 30px;
+  }
+  .pad-right-30{
+    padding-right: 30px;
+  }
+}

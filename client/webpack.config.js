@@ -34,24 +34,28 @@ module.exports = {
       },
       {
         test: /\.(css|less|scss)$/,
-        exclude: /node_modules/,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-              localIdentName: "[local]--[hash:base64:5]"
-            }
-          },
-          "sass-loader"
-        ]
-      },
-      {
-        test: /\.(css|less|scss)$/,
-        include: /node_modules/,
         use: ["style-loader", "css-loader", "sass-loader"]
       }
+      // {
+      //   test: /\.(css|less|scss)$/,
+      //   exclude: /node_modules/,
+      //   use: [
+      //     "style-loader",
+      //     {
+      //       loader: "css-loader",
+      //       options: {
+      //         modules: true,
+      //         localIdentName: "[local]--[hash:base64:5]"
+      //       }
+      //     },
+      //     "sass-loader"
+      //   ]
+      // },
+      // {
+      //   test: /\.(css|less|scss)$/,
+      //   include: /node_modules/,
+      //   use: ["style-loader", "css-loader", "sass-loader"]
+      // }
     ]
   },
   resolve: {
