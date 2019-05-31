@@ -12,7 +12,12 @@ class Instagram extends React.Component {
     axios.get("/api").then(data => {
       console.log(data);
     });
-    axios.post("/api/login/register").then(data => {
+    let params = {
+      username: 'kangkang',
+      email: '12@163.com',
+      password: '123456'
+    }
+    axios.post("/api/v2/login", params).then(data => {
       console.log(data);
     });
   }

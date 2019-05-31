@@ -15,9 +15,6 @@ module.exports = appInfo => {
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1559040438691_1468';
 
-  // add your middleware config here
-  config.middleware = [];
-
   config.security = { csrf: { enable: false } };
   config.sequelize = {
     dialect: 'mysql',
@@ -29,6 +26,10 @@ module.exports = appInfo => {
   config.password_secret = 'ps123secr';
   config.jwtSecret = 'yjg';
   config.auth_cookie_name = 'token';
+  // 白名单：将不需要登录的页面放在这里
+  config.authWhiteList = [ '/api/v2/login', '/api/v2/login/register' ];
+  // ctx request response
+  config.middleware = [ 'authorization' ];
 
   // add your user config here
   const userConfig = {
