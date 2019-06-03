@@ -1,8 +1,6 @@
 import React from "react";
 import { Icon, Input } from 'antd';
-import { Link } from "react-router-dom";
 const Search = Input.Search;
-
 import Style from './index.scss';
 
 class Home extends React.Component {
