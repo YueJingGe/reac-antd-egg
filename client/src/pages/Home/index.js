@@ -24,7 +24,6 @@ class Home extends React.Component {
             <Icon type="compass" className="icon size-18 pad-left-30"/>
             <Icon type="heart" className="icon size-18 pad-left-30"/>
             <Icon type="user" className="icon size-18 pad-left-30"/>
-            <span><a>注册</a>/<Link to="/login">登录</Link></span>
           </div>
         </nav>
       </header>

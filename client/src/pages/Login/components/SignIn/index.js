@@ -1,5 +1,7 @@
 import React from "react";
-import { Form, Icon, Input, Button } from 'antd';
+import { withRouter } from "react-router";
+import { Form, Icon, Input, Button, notification } from "antd";
+import API from "@common/api.js";
 import Style from "./index.scss";
 
 class SignIn extends React.Component {
@@ -8,25 +10,35 @@ class SignIn extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
+    this.props.form.validateFields(async (err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        console.log("Received values of form: ", values);
+        let response = await API.login(values);
+        if (response.success) {
+          notification["success"]({
+            message: "登录成功"
+          });
+          const { history } = this.props;
+          setTimeout(() => {
+            history.push("/");
+          }, 500);
+        }
       }
     });
-  };
+  }
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
       <main className={Style.signin}>
-        <header><Icon type="video-camera" /></header>
+        <header>
+          <Icon type="video-camera" />
+        </header>
         <h2>分享精彩世界</h2>
         <article className="content">
           <Form onSubmit={this.handleSubmit.bind(this)} className="login-form">
             <Form.Item hasFeedback>
               {getFieldDecorator("email", {
-                rules: [
-                  { required: true, message: "请输入邮箱!" }
-                ]
+                rules: [{ required: true, message: "请输入邮箱!" }]
               })(
                 <Input
                   placeholder="邮箱"
@@ -38,9 +50,7 @@ class SignIn extends React.Component {
             </Form.Item>
             <Form.Item hasFeedback>
               {getFieldDecorator("password", {
-                rules: [
-                  { required: true, message: "请输入密码!" }
-                ]
+                rules: [{ required: true, message: "请输入密码!" }]
               })(
                 <Input.Password
                   placeholder="密码"
@@ -51,7 +61,11 @@ class SignIn extends React.Component {
               )}
             </Form.Item>
             <Form.Item>
-              <Button type="primary" htmlType="submit" className="login-form-button">
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+              >
                 登录
               </Button>
             </Form.Item>
@@ -62,6 +76,6 @@ class SignIn extends React.Component {
   }
 }
 
-const WrappedSignIn = Form.create({ name: 'normal_login' })(SignIn);
+const WrappedSignIn = Form.create({ name: "normal_login" })(SignIn);
 
-export default WrappedSignIn;
+export default withRouter(WrappedSignIn);

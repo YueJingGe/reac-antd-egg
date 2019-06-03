@@ -1,5 +1,6 @@
 import React from "react";
-import { Form, Icon, Input, Button } from "antd";
+import { Form, Icon, Input, Button, notification } from "antd";
+import API from '@common/api.js';
 import Style from "./index.scss";
 
 class SignUp extends React.Component {
@@ -8,9 +9,17 @@ class SignUp extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
+    this.props.form.validateFields(async(err, values) => {
       if (!err) {
-        console.log("Received values of form: ", values);
+        let response = await API.signup(values);
+        if (response.success) {
+          notification["success"]({
+            message: "注册成功"
+          });
+          setTimeout(() => {
+            this.props.toggleSign();
+          }, 500);
+        }
       }
     });
   }

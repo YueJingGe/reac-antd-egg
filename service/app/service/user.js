@@ -12,11 +12,7 @@ class UserService extends Service {
     const queryResult = await this.hasRegister(user.email);
 
     if (queryResult) {
-      ctx.status = 200;
-      ctx.body = {
-        msg: '邮箱已经被使用',
-        flag: false,
-      };
+      ctx.returnFalse(200, '邮箱已经被使用');
       return;
     }
 
@@ -27,12 +23,7 @@ class UserService extends Service {
       .digest('hex');
 
     const userInfo = await this.ctx.model.User.create(user);
-    ctx.status = 200;
-    ctx.body = {
-      msg: '注册成功',
-      userId: user.userId,
-      flag: true,
-    };
+    ctx.returnBody(200, '注册成功', { userId: user.userId });
     return userInfo.dataValues;
   }
   async hasRegister(email) {

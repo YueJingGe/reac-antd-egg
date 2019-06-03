@@ -15,15 +15,10 @@ class LoginController extends Controller {
         domain: '127.0.0.1',
       };
       ctx.cookies.set(this.config.auth_cookie_name, token, opts);
-      ctx.status = 200;
-      ctx.body = {
-        message: '登录成功',
-        data: ctx.user,
-      };
+      ctx.returnBody(200, '登录成功');
     } else {
-      ctx.throw(400, '用户名或密码错误');
+      ctx.throw(400, '用户名或密码错误或该账号不存在');
     }
-
   }
   async register() {
     const { ctx } = this;

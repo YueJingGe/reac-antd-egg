@@ -19,4 +19,12 @@ module.exports = {
       success: true,
     };
   },
+  returnFalse(status, message, data = {}) {
+    this.status = status;
+    this.body = {
+      data,
+      message,
+      success: false,
+    };
+  },
 };
