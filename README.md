@@ -174,11 +174,12 @@ npm run start
 
 ## extend 扩展
 
-## FAQ
-
-- 已经登录成功了，但是访问首页还是显示没有权限，cookie 没有设置上？
-
 ## 全栈开发之登录 UI 组件
 
 - webpack 4.0 支持 css 模块化，不需要手动配置 css-loader:1.0.0
+
+## FAQ
+
+- 已经登录成功了，但是访问首页还是显示没有权限，cookie 没有设置上？
+- BrowserHistory 刷新页面 404 问题 `Cannot GET /login`
 
