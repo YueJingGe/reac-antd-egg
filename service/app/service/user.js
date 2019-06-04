@@ -65,6 +65,13 @@ class UserService extends Service {
       where: { email },
     });
   }
+
+  async getUserByUserId(userId) {
+    const query = { userId };
+    return await this.ctx.model.User.findOne({
+      where: query,
+    });
+  }
 }
 
 module.exports = UserService;

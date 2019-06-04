@@ -14,12 +14,12 @@ module.exports = (options, app) => {
       try {
         ctx.jwt.verify(token, app.config.jwtSecret);
       } catch (e) {
-        ctx.returnBody(401, "you dont't access to get data");
+        ctx.returnBody(401, '你没有权限得到数据');
         return;
       }
       await next(options); // 进行下一个事情
     } else {
-      ctx.returnBody(401, "you dont't access to get data");
+      ctx.returnBody(401, '你没有权限得到数据');
     }
   };
 }

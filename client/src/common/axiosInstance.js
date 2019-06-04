@@ -26,7 +26,7 @@ axiosInstance.interceptors.response.use(
       if (error.response.status === 401) {
         setTimeout(() => {
           window.location.href = "/login";
-        }, 2000);
+        }, 500);
       }
     } catch (error) {
       notification["error"]({

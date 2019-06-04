@@ -1,3 +1,18 @@
+- [reac-antd-egg](#reac-antd-egg)
+  - [启动](#启动)
+  - [CSS 模块化](#CSS模块化)
+  - [注册](#注册)
+  - [登录](#登录)
+  - [状态码](#状态码)
+  - [middleare 中间件](#middleare-中间件)
+  - [extend 扩展](#extend-扩展)
+  - [全栈开发之登录 UI 组件](#全栈开发之登录-UI-组件)
+  - [axios 异步请求](#axios-异步请求)
+  - [用户状态管理 redux](#用户状态管理-redux)
+  - [获取用户信息](#获取用户信息)
+  - [退出登录](#退出登录)
+  - [FAQ](#FAQ)
+
 # reac-antd-egg
 
 react 全栈项目
@@ -30,9 +45,9 @@ npm run start
 
 > http://127.0.0.1:7000/
 
-## local CSS
+## CSS 模块化
 
-使用 local CSS 模块化 css，使组件的样式绝对安全，不会跟其他的样式冲突。
+使用 `local CSS` 模块化 css，使组件的样式绝对安全，不会跟其他的样式冲突。
 
 在 webpack 中配置：
 
@@ -178,11 +193,55 @@ npm run start
 
 - webpack 4.0 支持 css 模块化，不需要手动配置 css-loader:1.0.0
 
-## axios
+## axios 异步请求
 
 axios + promise + login + withRouter
 
 axiosInstance.js 打底配置
+
+- axios instance 配置
+- interceptors 全局配置
+- 状态码 400 401
+
+## 用户状态管理 redux
+
+- 单一的状态树，整个应用只有一个状态树
+- reducer 纯函数 规定状态具体是如何更改的 精确计算状态的改变
+
+```js
+import { createStore } from "redux";
+import rootReducer from "./reducers";
+
+const store = createStore(rootReducer);
+export default store;
+```
+
+- combineReducers 合并多个分离的 reducer
+
+```js
+import { combineReducers } from "redux";
+export default combineReducers({
+  userInfo
+});
+```
+
+- Provider 将 store 注入到应用中
+
+```js
+import { Provider } from "react-readux";
+```
+
+- connect
+
+```js
+import { connect } from "react-readux";
+```
+
+## 获取用户信息
+
+## 退出登录
+
+原理：清除登录成功之后的 cookie
 
 ## FAQ
 

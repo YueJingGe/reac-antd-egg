@@ -1,6 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 import Layout from "./src/pages/index.js";
-import './assets/index.css';
+import store from "./src/store";
+import "./assets/index.css";
 
-ReactDOM.render(<Layout />, document.getElementById("root"));
+ReactDOM.render(
+  <Provider store={store}>
+    <Layout />
+  </Provider>,
+  document.getElementById("root")
+);
