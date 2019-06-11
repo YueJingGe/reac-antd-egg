@@ -105,7 +105,7 @@ npm run start
 
   ```bash
   PATH="$PATH":/usr/local/mysql/bin
-  mysqlshow -u root -p # 12345678
+  mysqlshow -u root -p # 输入密码：12345678
   mysql -u root -p   # 进入mysql
   use learn; # 使用learn数据库
   describe users; # 查看users表
@@ -156,6 +156,8 @@ npm run start
   model 文件作用：使用 js 对象描述数据表，相当于状态管理，状态初始化
 
   ORM 映射：提供了增删改查的接口，比如：create、findOne，使用 js 函数的方式描述 SQL 语句
+
+  写过 migration 文件和 model 文件之后执行：`./node_modules/.bin/sequelize db:migrate`
 
 - password 加密
 
