@@ -61,13 +61,14 @@ class UserService extends Service {
     return token;
   }
   async getUserByMail(email) {
+    console.log('=======email=======', email);
     return await this.ctx.model.User.findOne({
       where: { email },
     });
   }
 
   async getUserByUserId(userId) {
-    const query = { userId };
+    const query = { userId };    
     return await this.ctx.model.User.findOne({
       where: query,
     });

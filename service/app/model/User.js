@@ -2,7 +2,6 @@
 
 module.exports = app => {
   const { STRING, INTEGER, DATE, NOW } = app.Sequelize;
-
   const User = app.model.define(
     'users',
     {
@@ -27,6 +26,5 @@ module.exports = app => {
       freezeTableName: true, // 不自动将表名添加复数
     }
   );
-
   return User;
 };
