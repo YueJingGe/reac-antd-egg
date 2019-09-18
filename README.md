@@ -12,6 +12,8 @@
   - [获取用户信息](#获取用户信息)
   - [退出登录](#退出登录)
   - [FAQ](#FAQ)
+  - [一些 mysql 的简单操作](#一些mysql的简单操作)
+    - [mysql -u root -p 解释](#mysql-uroot-p解释)
 
 # reac-antd-egg
 
@@ -101,12 +103,18 @@ npm run start
 
     Mac 系统偏好设置 -> MySql -> intialize Database -> 选择“Use Legacy Password Encryption” -> 点击 OK
 
+- sequelize
+
+```bash
+./node_modules/.bin/sequelize db:create # 创建数据库
+```
+
 - 数据库命令
 
   ```bash
   PATH="$PATH":/usr/local/mysql/bin
-  mysqlshow -u root -p # 输入密码：12345678
-  mysql -u root -p   # 进入mysql
+  mysqlshow -u root -p # 输入密码：12345678 查看当前拥有的所有数据库
+  mysql -u root -p   # 连接数据库服务器 mysql -u 用户名 -p 密码
   use learn; # 使用learn数据库
   describe users; # 查看users表
   truncate users; # 清空users表
@@ -149,7 +157,7 @@ npm run start
 
 - migration 迁移
 
-  `./node_modules/.bin/sequelize migration:create --name create-users`
+  `./node_modules/.bin/sequelize migration:create --name create-users` 创建表
 
   migration 作用：完成 SQL 的迁移，使用 js 语句代替 SQL 语句创建表、声明字段类型
 
@@ -249,3 +257,62 @@ import { connect } from "react-readux";
 
 - 已经登录成功了，但是访问首页还是显示没有权限，cookie 没有设置上？
 - BrowserHistory 刷新页面 404 问题 `Cannot GET /login`
+
+## 一些 mysql 的简单操作
+
+- 权限
+
+```bash
+show grants for 'root'@'localhost'; # 查询用户权限
+grant select,insert,update,delete on *.* to root@localhost identified by '12345678'; # 终极解决方案：设置用户的密码
+# flush privileges;
+```
+
+- 启动、停止、重新启动 MySQL 服务
+
+```bash
+/usr/local/opt/mysql@5.5/support-files/mysql.server start
+/usr/local/opt/mysql@5.5/support-files/mysql.server stop
+/usr/local/opt/mysql@5.5/support-files/mysql.server restart
+```
+
+- 查看、删除、创建 数据库
+
+```
+show databases;
+
+create database learn;
+
+drop database learn;
+```
+
+- 创建、查询所有、删除用户
+
+```bash
+create user "root"@"127.0.0.1" identified by "12345678"; # 创建用户
+
+grant all privileges on *.* to root@localhost identified by '12345678'; # 格式:grant select on 数据库.* to 用户名@登录主机 identified by '密码'
+
+SELECT DISTINCT CONCAT('User: ''',user,'''@''',host,''';') AS query FROM mysql.user;
+
+drop user 'root'@'localhost'; # 删除用户 并且删除权限
+```
+
+- 切换数据库
+
+```
+use '数据库名';
+```
+
+- 列出所有表
+
+```
+show tables;
+drop table users;
+```
+
+### mysql -u root -p 解释
+
+`mysql -u 用户名 -p 密码` 是连接数据库服务器的命令。要求你输入自己连接数据库的用户名和密码。
+
+考虑密码如果直接明文写在这条命令行上，不安全，所以可以先输入：mysql -u 用户名 -p 然后回车，此时提示你输入密码，这时候输入的密码就不再是明文的了。
